@@ -9,10 +9,10 @@ var corsOptions = {
 }
 
 const generateBucketsData = () => (
-  Array.apply(null, {length: 9}).map((_, i) => ({
+  Array.apply(null, {length: Math.ceil(Math.random()*6)}).map((_, i) => ({
     id: i + 1,
     title: 'Trip Entertainment',
-    subTitle: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
+    subTitle: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim a`
   }))
 )
 
@@ -21,7 +21,7 @@ app.get('/api/buckets', cors(corsOptions), (req, res) => {
   const response = Array.apply(null, { length: 4 }).map((_, i) => ({
     id: i + 1,
     title: `Title ${i+1}`,
-    data: i !== 3 ? generateBucketsData() : []
+    data: generateBucketsData()
   }))
   res.send(JSON.stringify(response))
 })
