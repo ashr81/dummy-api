@@ -21,7 +21,7 @@ app.get('/api/buckets', cors(corsOptions), (req, res) => {
   const response = Array.apply(null, { length: 4 }).map((_, i) => ({
     id: i + 1,
     title: `Title ${i+1}`,
-    data: generateBucketsData()
+    data: i !== 3 ? generateBucketsData() : []
   }))
   res.send(JSON.stringify(response))
 })
